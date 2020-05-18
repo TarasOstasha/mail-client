@@ -269,6 +269,8 @@ async function runSample(to, msg, areaMsg) {
 
 
 
+
+
 router.post('/msg', cors(), (req, res) => {
   try {
     console.log(req.body, 'this is request body!!!')
@@ -284,6 +286,16 @@ router.post('/msg', cors(), (req, res) => {
 
   //console.log(msg,to)
 
+})
+
+router.get('/msg-list', cors(), (req, res) => {
+  try {
+    const msg = listMessages('me');
+    res.json({ ok: true, message: msg });
+  } catch (error) {
+    console.log(error);
+   // res.send(501);
+  }
 })
 
 module.exports = router;
